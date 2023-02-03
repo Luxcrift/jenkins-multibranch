@@ -4,5 +4,5 @@ services:
     container_name: NAME
     image: REGISTRY/REPOSITORY:VERSION
     ports:
-      - "4002:4000"
+      - "4003:4000"
     restart: always
