@@ -1,12 +1,12 @@
 pipeline {
     agent any
     environment {  
-        DOCKER_HUB_LOGIN = credentials('docker-hub-roxs')
+        DOCKER_HUB_LOGIN = credentials('docker-mieulet')
     }
     stages {
         stage('Automation') {
             steps {
-               sh 'git clone -b master https://github.com/tetranucleotido/automation.git'
+               sh 'git clone -b master https://github.com/Luxcrift/automation.git'
             }
         }
         stage('install dependencies') {
@@ -36,7 +36,8 @@ pipeline {
         } 
         stage('Docker Build') {
             steps {
-               sh './automation/docker_build.sh'
+                sh 'chmod +x ./automation/docker_build.sh'
+                sh './automation/docker_build.sh'
             }
         }
         stage('Docker Push to Docker-hub') {
