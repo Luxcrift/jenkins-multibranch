@@ -42,12 +42,14 @@ pipeline {
         }
         stage('Docker Push to Docker-hub') {
             steps {
+                sh 'chmod +x ./automation/docker_push.sh'
                 sh './automation/docker_push.sh'
             }
         }
         stage('Deploy to EC2') {
             steps {
                 sshagent(['ssh-ec2']){
+                    sh 'chmod +x ./automation/deploy_to_ec2_compose.sh'
                     sh './automation/deploy_to_ec2_compose.sh'
                 }
             }
